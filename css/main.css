@@ -34,9 +34,11 @@ footer {
     bottom: 0;
 }
 
+
 .row-footer {
     padding: 20px 75px;
     padding-bottom: 75px;
+    margin-left: 15%;
 }
 
 
