@@ -12,43 +12,49 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-        <a class="navbar-brand text-white" href="#">Node.js Recipe App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="page-container">
+        <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+            <a class="navbar-brand text-white" href="#">Node.js Recipe App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Recipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Archives</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/categories">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/archives">Archives</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="body-container">
+            {{{body}}}
         </div>
-    </nav>
 
-    {{{body}}}
-
-    <footer>
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col">
-                    1 of 2
-                </div>
-                <div class="col">
-                    2 of 2
+        <footer>
+            <div class="container pt-5">
+                <div class="row row-footer">
+                    <div class="col">
+                        <h4>About</h4>
+                        <p>This application is a student project built using the
+                            <a href="https://www.themealdb.com/api.php" target="_blank">Meal DB</a> web API.</p>
+                    </div>
+                    <div class="col" id="support-column">
+                        <h4>Support</h4>
+                        <a href="/contact">Contact</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
 </body>
 
 </html>

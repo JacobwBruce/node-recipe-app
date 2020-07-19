@@ -1,0 +1,27 @@
+.search-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.search-container p {
+    font-size: 21px;
+}
+
+.search-container input {
+    border: #EFEFEF 1px solid;
+    border-radius: 25px;
+    text-align: center;
+    width: 30%;
+    outline: none;
+
+}
+
+.search-container input:focus {
+    border: rgb(108, 108, 245) 1px solid;
+}
+
+.divider {
+    padding-bottom: 50px;
+    border-bottom: #EFEFEF 1px solid;
+    margin: 0 15%
+}
