@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="../css/recipe-list.css">
+
+<div class="list-recipe-container">
+    <h1 class="page-title">{{searchQuery}}</h1>
+
+    <div class="divider top-divider"></div>
+    <div class="recipe-container">
+        {{#each meals}}
+        <div class="recipe-card">
+            <img class="recipe-image" src="{{strMealThumb}}" alt="">
+            <p class="recipe-title">{{strMeal}}</p>
+            <div class="divider recipe-divider"></div>
+        </div>
+        {{/each}}
+    </div>
+</div>
