@@ -1,0 +1,64 @@
+.button {
+    border: none;
+    background-color: #EFEFEF;
+    font-size: 20px;
+    padding: 5px 80px;
+    transition: 0.2s ease-in-out;
+    margin-top: 40px;
+}
+
+.button:hover {
+    background-color: #363636;
+    color: white;
+}
+
+.contact-page-container {
+    margin: 50px 30%;
+}
+
+.title {
+    font-size: 64px;
+    text-align: center;
+}
+
+.contact-message {
+    text-align: center;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-input,
+.email-input,
+.message-input {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    font-weight: 200;
+    width: 100%;
+    border: 0;
+    outline: none;
+    border-bottom: solid 1px #9B9B9B;
+    padding-bottom: 0.5rem;
+    margin-top: 5%;
+    min-width: 23.72881%;
+    height: 4rem;
+    transition: 0.5s;
+}
+
+.message-input:focus {
+    height: 20rem;
+}
+
+@media (max-width: 1100px) {
+    .contact-page-container {
+        margin: 50px 20%;
+    }
+}
+
+@media (max-width: 800px) {
+    .contact-page-container {
+        margin: 50px 10%;
+    }
+}

@@ -7,9 +7,12 @@
         <div class="recipe-header">
             <h1 class="recipe-title">{{meal.strMeal}}</h1>
             <h4 class="recipe-tags">{{meal.strTags}}</h4>
-            <form action="" method="GET">
-                <button class="archive-button">Archive</button>
-            </form>
+            {{!-- <form action="/addMeal" method="POST"> --}}
+            <input type="hidden" name="mealId" id="mealId" value="{{meal.idMeal}}">
+            <input type="hidden" name="mealName" id="mealName" value="{{meal.strMeal}}">
+            <input type="hidden" name="mealImage" id="mealImage" value="{{meal.strMealThumb}}">
+            <button class="archive-button" id="archive-button">Archive</button>
+            {{!-- </form> --}}
         </div>
     </div>
 </div>
@@ -30,3 +33,5 @@
         {{/each}}
     </p>
 </div>
+
+<script src="../js/addMeal.js" defer></script>

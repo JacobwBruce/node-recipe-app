@@ -112,6 +112,7 @@
     }
 
     .search-container input {
-        width: 50%;
+        width: 90%;
+        margin: 0;
     }
 }
