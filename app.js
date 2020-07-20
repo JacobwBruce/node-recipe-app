@@ -31,7 +31,7 @@ app.get("/categories", (req, res) => {
 });
 
 app.get("/search", async (req, res) => {
-  const categories = ['SEAFOOD', 'BEEF', 'PORK', 'CHICKEN', 'PASTA', 'BREAKFAST', 'VEGETERIAN', 'LAMB', 'DESSERT'];
+  const categories = ['SEAFOOD', 'BEEF', 'PORK', 'CHICKEN', 'PASTA', 'BREAKFAST', 'VEGETARIAN', 'LAMB', 'DESSERT'];
   const searchQuery = req.query.query;
   let meals = [];
   if (categories.indexOf(searchQuery.toUpperCase()) == -1) {
@@ -49,7 +49,9 @@ app.get("/search", async (req, res) => {
 });
 
 app.get("/meal", async (req, res) => {
-  const meal = await getRecipeById(req.query.id);
+  let meal = await getRecipeById(req.query.id);
+  meal.strInstructions = meal.strInstructions.split('\n');
+  meal = ingredientsFormatter(meal);
   res.render("recipe", {
     meal
   });
@@ -57,3 +59,15 @@ app.get("/meal", async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
+
+
+const ingredientsFormatter = (meal) => {
+  meal.ingredients = [];
+  for (let x = 1; x < 21; x++) {
+    if (meal[`strIngredient${x}`].length < 1) {
+      break;
+    }
+    meal.ingredients.push(`${meal[`strIngredient${x}`]} | ${meal[`strMeasure${x}`]}`);
+  }
+  return meal;
+}

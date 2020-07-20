@@ -1,3 +1,32 @@
 <link rel="stylesheet" href="../css/recipe.css">
 
-<h1>{{meal.strMeal}}</h1>
+
+<div class="recipe-heading-container">
+    <div class="heading-info-container">
+        <img class="recipe-image" src="{{meal.strMealThumb}}" alt="">
+        <div class="recipe-header">
+            <h1 class="recipe-title">{{meal.strMeal}}</h1>
+            <h4 class="recipe-tags">{{meal.strTags}}</h4>
+            <form action="" method="GET">
+                <button class="archive-button">Archive</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="ingredients-container">
+    <h1 class="ingredients-title">Ingredients</h1>
+    <ul class="ingredients-list">
+        {{#each meal.ingredients}}
+        <li class="ingredient">{{this}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+<div class="directions-container">
+    <h1 class="directions-title">Directions</h1>
+    <p class="directions">
+        {{#each meal.strInstructions}}
+        {{this}} <br>
+        {{/each}}
+    </p>
+</div>
