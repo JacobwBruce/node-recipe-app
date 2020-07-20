@@ -1,7 +1,11 @@
 import Express from "express";
 import exphbs from "express-handlebars";
 import path from "path";
-import { getRecipeById, getRecipesByCategory } from "./API_tools.js";
+import {
+  getRecipeById,
+  getRecipesByCategory,
+  getRecipesBySearch
+} from "./API_tools.js";
 
 // Middleware
 const app = Express();
@@ -27,11 +31,27 @@ app.get("/categories", (req, res) => {
 });
 
 app.get("/search", async (req, res) => {
+  const categories = ['SEAFOOD', 'BEEF', 'PORK', 'CHICKEN', 'PASTA', 'BREAKFAST', 'VEGETERIAN', 'LAMB', 'DESSERT'];
   const searchQuery = req.query.query;
-  const meals = await getRecipesByCategory(searchQuery);
+  let meals = [];
+  if (categories.indexOf(searchQuery.toUpperCase()) == -1) {
+    meals = await getRecipesBySearch(searchQuery);
+  } else {
+    meals = await getRecipesByCategory(searchQuery);
+  }
+  let errors;
+  meals === [] ? errors = true : errors = false;
   res.render("recipe-list", {
     searchQuery,
     meals,
+    errors
+  });
+});
+
+app.get("/meal", async (req, res) => {
+  const meal = await getRecipeById(req.query.id);
+  res.render("recipe", {
+    meal
   });
 });
 

@@ -24,10 +24,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+}
+
+.recipe-container a {
+    color: black;
+    text-decoration: none;
 }
 
 .recipe-card {
     margin: 40px 0;
+    transition: 0.2s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: scale(1.1);
 }
 
 .recipe-divider {

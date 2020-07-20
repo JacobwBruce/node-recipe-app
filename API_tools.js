@@ -9,7 +9,13 @@ export const getRecipesByCategory = async (category) => {
 };
 
 export const getRecipeById = async (recipeId) => {
-  return await axios.get(
+  const data = await axios.get(
     `https://www.themealdb.com/api/json/v1/${API_KEY}/lookup.php?i=${recipeId}`
-  ).data.meals[0];
+  );
+  return data.data.meals[0];
 };
+
+export const getRecipesBySearch = async (query) => {
+  const data = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+  return data.data.meals;
+}
