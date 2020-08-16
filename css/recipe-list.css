@@ -10,6 +10,10 @@
     letter-spacing: 5px;
 }
 
+.errors {
+    margin-top: 50px;
+}
+
 .divider {
     width: 100%;
     height: 1px;

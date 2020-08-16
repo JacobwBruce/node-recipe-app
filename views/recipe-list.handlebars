@@ -5,7 +5,12 @@
 
     <div class="divider top-divider"></div>
 
-    {{!-- condition statement for errors --}}
+    {{#if errors}}
+    <div class="errors">
+        <h2>Sorry!</h2>
+        <h4>Your search result returned no recipes, try another search or view through the categories!</h4>
+    </div>
+    {{/if}}
 
     <div class="recipe-container">
         {{#each meals}}

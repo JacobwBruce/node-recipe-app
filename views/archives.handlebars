@@ -3,13 +3,77 @@
 <div class="title-container">
     <h1 class="title">Archives</h1>
     <div class="button-container">
-        <button class="button email-button" id="email-button">Email</button>
-        <button class="button clear-button" id="clear-button">Clear</button>
+        <button class="button email-button" id="email-button" data-toggle="modal"
+            data-target="#emailModal">Email</button>
+
+        <button class="button clear-button" id="clear-button" data-toggle="modal"
+            data-target="#clearModal">Clear</button>
     </div>
 </div>
+
+
+<div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/sendIngredientsEmail" id="emailForm" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="emailModalLabel">Enter Email</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        {{!-- <button class="btn btn-primary">Send</button> --}}
+                        <input type="submit" class="btn btn-success" value="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clearModalLabel">Are you sure you want to clear?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="confirm-clear-button">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
 
 <div class="recipes-container" id="recipes-container">
 
 </div>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 <script src="../js/archives.js" defer></script>

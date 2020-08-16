@@ -2,57 +2,59 @@
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat',
-        sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
-
 #navbar {
-    background-color: black;
+  background-color: black;
 }
 
 .page-container {
-    position: relative;
-    min-height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 .body-container {
-    padding-bottom: 350px;
+  padding-bottom: 350px;
 }
 
 footer {
-    background: #FAFAFA;
-    border: #EFEFEF 1px solid;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+  background: #fafafa;
+  border: #efefef 1px solid;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
-
 
 .row-footer {
-    padding: 20px 75px;
-    padding-bottom: 75px;
-    margin-left: 15%;
+  padding: 20px 75px;
+  padding-bottom: 75px;
+  margin-left: 15%;
 }
 
+@media (max-width: 992px) {
+  #navbarSupportedContent {
+    display: block !important;
+  }
+}
 
 @media (max-width: 800px) {
-    .row-footer {
-        text-align: center;
-        display: contents;
-    }
+  .row-footer {
+    text-align: center;
+    display: contents;
+  }
 
-    footer {
-        padding-bottom: 50px;
-    }
+  footer {
+    padding-bottom: 50px;
+  }
 
-    #support-column {
-        margin-top: 50px;
-    }
+  #support-column {
+    margin-top: 50px;
+  }
 }

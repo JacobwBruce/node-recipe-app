@@ -1,23 +1,28 @@
-import Express from "express";
-import exphbs from "express-handlebars";
-import path from "path";
+import Express from 'express';
+import exphbs from 'express-handlebars';
+import path from 'path';
 import {
   getRecipeById,
   getRecipesByCategory,
   getRecipesBySearch,
-} from "./API_tools.js";
+} from './API_tools.js';
+import {
+  ingredientsFormatter,
+  sendEmail,
+  recipeEmailFormatter,
+} from './tools.js';
 
 // Middleware
 const app = Express();
 const __dirname = path.resolve();
 
 app.engine(
-  "handlebars",
+  'handlebars',
   exphbs({
-    defaultLayout: "main",
+    defaultLayout: 'main',
   })
 );
-app.set("view engine", "handlebars");
+app.set('view engine', 'handlebars');
 
 app.use(Express.static(__dirname));
 
@@ -28,25 +33,25 @@ app.use(
 );
 
 // Handlers
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "public", "index.html"))
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 );
 
-app.get("/categories", (req, res) => {
-  res.render("categories");
+app.get('/categories', (req, res) => {
+  res.render('categories');
 });
 
-app.get("/search", async (req, res) => {
+app.get('/search', async (req, res) => {
   const categories = [
-    "SEAFOOD",
-    "BEEF",
-    "PORK",
-    "CHICKEN",
-    "PASTA",
-    "BREAKFAST",
-    "VEGETARIAN",
-    "LAMB",
-    "DESSERT",
+    'SEAFOOD',
+    'BEEF',
+    'PORK',
+    'CHICKEN',
+    'PASTA',
+    'BREAKFAST',
+    'VEGETARIAN',
+    'LAMB',
+    'DESSERT',
   ];
   const searchQuery = req.query.query;
   let meals = [];
@@ -56,44 +61,50 @@ app.get("/search", async (req, res) => {
     meals = await getRecipesByCategory(searchQuery);
   }
   let errors;
-  meals === [] ? (errors = true) : (errors = false);
-  res.render("recipe-list", {
+  meals === null ? (errors = true) : (errors = false);
+  res.render('recipe-list', {
     searchQuery,
     meals,
     errors,
   });
 });
 
-app.get("/meal", async (req, res) => {
+app.get('/meal', async (req, res) => {
   let meal = await getRecipeById(req.query.id);
-  meal.strInstructions = meal.strInstructions.split("\n");
+  meal.strInstructions = meal.strInstructions.split('\n');
   meal = ingredientsFormatter(meal);
-  res.render("recipe", {
+  meal.ingredientsString = meal.ingredients.join();
+  res.render('recipe', {
     meal,
   });
 });
 
-
-app.get("/archives", (req, res) => {
-  res.render("archives");
+app.get('/archives', (req, res) => {
+  res.render('archives');
 });
 
-app.get("/contact", (req, res) => {
-  res.render("contact");
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
+app.post('/sendSupportEmail', async (req, res) => {
+  const { name, email, message } = req.body;
+  const newMessage = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+  sendEmail('jacobwbruce@hotmail.com', 'Support Ticket!', newMessage);
+  const displayMessage =
+    'Thank you for your email! I will reply as soon as possible.';
+  res.render('messages', { displayMessage });
+});
+
+app.post('/sendIngredientsEmail', async (req, res) => {
+  const ingredients = req.body.hiddenIngredients;
+  const recipeNames = req.body.hiddenRecipeNames;
+  const message = recipeEmailFormatter(recipeNames, ingredients);
+  const { email } = req.body;
+  sendEmail(email, 'Ingredients List!', message);
+  const displayMessage = 'Your email will arive shortly!';
+  res.render('messages', { displayMessage });
 });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
-
-const ingredientsFormatter = (meal) => {
-  meal.ingredients = [];
-  for (let x = 1; x < 21; x++) {
-    if (meal[`strIngredient${x}`].length < 1) {
-      break;
-    }
-    meal.ingredients.push(
-      `${meal[`strIngredient${x}`]} | ${meal[`strMeasure${x}`]}`
-    );
-  }
-  return meal;
-};

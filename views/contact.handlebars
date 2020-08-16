@@ -4,9 +4,9 @@
     <h1 class="title">Contact</h1>
     <p class="contact-message">Fill out the form below and I will be in contact soon</p>
     <div class="form-container">
-        <form action="" method="POST">
-            <input class="name-input" type="text" placeholder="Name" autocomplete="off" required>
-            <input class="email-input" type="email" placeholder="Email" autocomplete="off" required>
+        <form action="/sendSupportEmail" method="POST">
+            <input class="name-input" name="name" type="text" placeholder="Name" autocomplete="off" required>
+            <input class="email-input" name="email" type="email" placeholder="Email" autocomplete="off" required>
             <textarea class="message-input" name="message" id="message" cols="30" rows="10" placeholder="Message"
                 required></textarea>
             <button class="button">Submit</button>
