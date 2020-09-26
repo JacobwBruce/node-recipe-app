@@ -33,17 +33,7 @@ export const recipeEmailFormatter = (recipeNames, ingredients) => {
 
 export const sendEmail = (email, subject, message) => {
   dotenv.config();
-  let transport = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      type: 'OAuth2',
-      user: 'pythonwebrecipes@gmail.com',
-      clientId: '592759427315-ciki7vsqmglihi9iag8b2lonuljv25d1.apps.googleusercontent.com',
-      clientSecret: '5BVXgzVI2qLygJbudvAPaZ6X',
-      refreshToken: '1//04ULeQc6OPXBDCgYIARAAGAQSNwF-L9IrHVHX8RF0J07CY7NGU4HztTI-Oplf5T8JZyn4IMEhmNmg7i9Muv-EPnmizp-41DCYex4',
-      accessToken: 'ya29.a0AfH6SMCk-ZdHqlo387se9cclL3JmzCvuN9UMrRjFmX63YdcH7FRxQhmEO142OaO3Em4nmiqvEoWDKYsEIid7P9Hf8SkRKaX7rqaG7INuqbMrdGgYs2z32t5l48LnzrbLMVvauk4AwNkKlLd2H5NrBjwfIzDwxY4EhTM'
-    }
-  });
+  //transport object would be declared here
 
   let options = {
     to: email, // List of recipients
